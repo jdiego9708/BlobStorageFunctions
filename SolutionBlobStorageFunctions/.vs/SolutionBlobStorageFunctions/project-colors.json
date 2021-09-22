@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b8adf4e3-5918-420d-a55c-f9268ac9d420": {
+      "ProjectGuid": "b8adf4e3-5918-420d-a55c-f9268ac9d420",
+      "DisplayName": "BlobStorageFunctions",
+      "ColorIndex": 0
+    },
+    "573fcf80-8336-464f-90b1-dd1065a0d223": {
+      "ProjectGuid": "573fcf80-8336-464f-90b1-dd1065a0d223",
+      "DisplayName": "BlobFunctions.Entities",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
