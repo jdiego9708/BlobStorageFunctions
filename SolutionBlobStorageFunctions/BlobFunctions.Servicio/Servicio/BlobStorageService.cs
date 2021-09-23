@@ -11,6 +11,13 @@
         {
             this.HelperBlobStorage = HelperBlobStorage;  
         }
+
+        public async Task<string> SubirArchivoDeContenedorBlobStorage(string nombreArchivo,
+           string contentType, string contenedor, byte[] archivo)
+        {
+            return await this.HelperBlobStorage.SubirArchivoDeContenedorBlobStorage(nombreArchivo, contentType, contenedor, archivo);
+        }
+
         public async Task<byte[]> DescargarArchivoDeContenedorBlobStorage(string nombreArchivo, string contenedor)
         {
             return await this.HelperBlobStorage.DescargarArchivoDeContenedorBlobStorage(nombreArchivo, contenedor);

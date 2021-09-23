@@ -10,6 +10,36 @@ namespace BlobFunctions.Core.Servicio
 {
     public class HelperBlobStorage : IHelperBlobStorage
     {
+        public async Task<string> SubirArchivoDeContenedorBlobStorage(string nombreArchivo, 
+            string contentType, string contenedor, byte[] archivo)
+        {
+            try
+            {
+                CloudBlobContainer container = await ConfiguracionContainer(contenedor);
+                CloudBlockBlob blob = container.GetBlockBlobReference(nombreArchivo);
+                Stream mem = new MemoryStream();
+                blob.Properties.ContentType = contentType;
+
+                if (blob != null)
+                {
+                    await blob.UploadFromStreamAsync(new MemoryStream(archivo));
+
+                    if (blob.Properties.Length >= 0)
+                    {
+                        string AbsoluteUri = blob.Uri.AbsoluteUri;
+                        return AbsoluteUri;
+                    }
+                    else
+                        throw new Exception();
+                }
+                else
+                    throw new Exception();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public async Task<byte[]> DescargarArchivoDeContenedorBlobStorage(string nombreArchivo, string contenedor)
         {
             try
@@ -29,9 +59,8 @@ namespace BlobFunctions.Core.Servicio
                 return null;
             }
         }
-        private async Task<CloudBlobContainer> ConfiguracionContainer(string contenedor)
+        private static async Task<CloudBlobContainer> ConfiguracionContainer(string contenedor)
         {
-
             // Create Reference to Azure Storage Account
             string defaultEndpointsProtocol = Convert.ToString(Environment.GetEnvironmentVariable("DefaultEndpointsProtocol"));
             string accountName = Convert.ToString(Environment.GetEnvironmentVariable("AccountName"));
