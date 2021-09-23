@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Repositorio\\BlobStorageFunction\\BlobStorageFunctions\\SolutionBlobStorageFunctions\\BlobFunctions.Entities\\BlobFunctions.Entities.csproj": {}
+    "C:\\Repositorio\\BlobStorageFunction\\BlobStorageFunctions\\SolutionBlobStorageFunctions\\BlobFunctions.Core\\BlobFunctions.Core.csproj": {}
   },
   "projects": {
-    "C:\\Repositorio\\BlobStorageFunction\\BlobStorageFunctions\\SolutionBlobStorageFunctions\\BlobFunctions.Entities\\BlobFunctions.Entities.csproj": {
+    "C:\\Repositorio\\BlobStorageFunction\\BlobStorageFunctions\\SolutionBlobStorageFunctions\\BlobFunctions.Core\\BlobFunctions.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repositorio\\BlobStorageFunction\\BlobStorageFunctions\\SolutionBlobStorageFunctions\\BlobFunctions.Entities\\BlobFunctions.Entities.csproj",
-        "projectName": "BlobFunctions.Entities",
-        "projectPath": "C:\\Repositorio\\BlobStorageFunction\\BlobStorageFunctions\\SolutionBlobStorageFunctions\\BlobFunctions.Entities\\BlobFunctions.Entities.csproj",
+        "projectUniqueName": "C:\\Repositorio\\BlobStorageFunction\\BlobStorageFunctions\\SolutionBlobStorageFunctions\\BlobFunctions.Core\\BlobFunctions.Core.csproj",
+        "projectName": "BlobFunctions.Core",
+        "projectPath": "C:\\Repositorio\\BlobStorageFunction\\BlobStorageFunctions\\SolutionBlobStorageFunctions\\BlobFunctions.Core\\BlobFunctions.Core.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Repositorio\\BlobStorageFunction\\BlobStorageFunctions\\SolutionBlobStorageFunctions\\BlobFunctions.Entities\\obj\\",
+        "outputPath": "C:\\Repositorio\\BlobStorageFunction\\BlobStorageFunctions\\SolutionBlobStorageFunctions\\BlobFunctions.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -42,6 +42,16 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "WindowsAzure.Storage": {
+              "target": "Package",
+              "version": "[9.3.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
