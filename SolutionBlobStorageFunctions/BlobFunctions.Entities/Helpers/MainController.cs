@@ -1,10 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BlobFunctions.Entities.Models;
+using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
 namespace BlobFunctions.Entities.Helpers
 {
     public class MainController
     {
         public ServiceCollection ServiceColletionMain { get; set; }
+        public List<ModeloError> Errores {  get; set; }
 
         #region PATRON SINGLETON
         private static MainController _Instancia;

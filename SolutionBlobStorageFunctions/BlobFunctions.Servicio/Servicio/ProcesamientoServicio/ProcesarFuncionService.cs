@@ -1,4 +1,4 @@
-﻿namespace BlobStorageFunctions.Procesamiento
+﻿namespace BlobFunctions.Servicio.ProcesamientoServicio
 {
     using BlobFunctions.Entities.Helpers;
     using BlobFunctions.Entities.Models;
@@ -7,56 +7,54 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class ProcesarFuncion
+    public class ProcesarFuncionService : IProcesarFuncionService
     {
         public IBlobStorageService IBlobStorageService { get; set; }
-        public ProcesarFuncion()
+        public ProcesarFuncionService(IBlobStorageService IBlobStorageService)
         {        
-            this.IBlobStorageService = DIHelper.GetService<IBlobStorageService>();
+            this.IBlobStorageService = IBlobStorageService;
         }
-
         public async Task<ModeloRespuesta> ProcesarDescarga(InfoArchivo infoArchivo)
         {
-            ModeloRespuesta respuesta = new();
+            ModeloRespuesta rpta = new();
             byte[] archivo = 
                 await IBlobStorageService.DescargarArchivoDeContenedorBlobStorage(infoArchivo.NombreArchivo, infoArchivo.ContenedorArchivo);
             if (archivo != null)
             {
-                respuesta.EsExitoso = true;
-                respuesta.Respuesta = "Se descargó correctamente el archivo";
-                respuesta.RespuestaArchivo = Convert.ToBase64String(archivo);
+                rpta.EsExitoso = true;
+                rpta.Respuesta = "Se descargó correctamente el archivo";
+                rpta.RespuestaArchivo = Convert.ToBase64String(archivo);
             }
             else
             {
-                respuesta.EsExitoso = false;
-                respuesta.Respuesta = "No se pudo descargar el archivo";
+                rpta.EsExitoso = false;
+                rpta.Respuesta = "No se pudo descargar el archivo";
             }
 
-            return respuesta;
+            return rpta;
         }
-
         public async Task<ModeloRespuesta> ProcesarSubida(InfoArchivo infoArchivo)
         {
-            ModeloRespuesta respuesta = new();
+            ModeloRespuesta rpta = new();
 
             byte[] archivo = Convert.FromBase64String(infoArchivo.Archivo);
 
-            string rpta = 
+            string respuesta = 
                 await IBlobStorageService.SubirArchivoDeContenedorBlobStorage(infoArchivo.NombreArchivo, infoArchivo.ContentType,
                 infoArchivo.ContenedorArchivo, archivo);
             if (archivo != null)
             {
-                respuesta.EsExitoso = true;
-                respuesta.Respuesta = "Se subió correctamente el archivo";
-                respuesta.RespuestaArchivo = rpta;
+                rpta.EsExitoso = true;
+                rpta.Respuesta = "Se subió correctamente el archivo";
+                rpta.RespuestaArchivo = respuesta;
             }
             else
             {
-                respuesta.EsExitoso = false;
-                respuesta.Respuesta = "No se pudo subir el archivo";
+                rpta.EsExitoso = false;
+                rpta.Respuesta = "No se pudo subir el archivo";
             }
 
-            return respuesta;
+            return rpta;
         }
     }
 }

@@ -4,6 +4,7 @@ namespace BlobStorageFunctions
     using BlobFunctions.Core.Servicio;
     using BlobFunctions.Entities.Helpers;
     using BlobFunctions.Servicio.Interface;
+    using BlobFunctions.Servicio.ProcesamientoServicio;
     using BlobFunctions.Servicio.Servicio;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
@@ -31,7 +32,8 @@ namespace BlobStorageFunctions
         private static void ConfigureServices(ServiceCollection services)
         {
             services.AddScoped<IBlobStorageService, BlobStorageService>()
-                .AddScoped<IHelperBlobStorage, HelperBlobStorage>();
+                .AddScoped<IHelperBlobStorage, HelperBlobStorage>()
+                .AddScoped<IProcesarFuncionService, ProcesarFuncionService>();
         }
     }
 }

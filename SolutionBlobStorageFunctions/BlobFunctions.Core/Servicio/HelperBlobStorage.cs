@@ -1,13 +1,14 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage;
-using BlobFunctions.Core.Interface;
-
-namespace BlobFunctions.Core.Servicio
+﻿namespace BlobFunctions.Core.Servicio
 {
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage;
+    using BlobFunctions.Core.Interface;
+    using BlobFunctions.Entities.Helpers;
+    using Entities.Models;
+
     public class HelperBlobStorage : IHelperBlobStorage
     {
         public async Task<string> SubirArchivoDeContenedorBlobStorage(string nombreArchivo, 
@@ -35,8 +36,9 @@ namespace BlobFunctions.Core.Servicio
                 else
                     throw new Exception();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ErrorHelper.ObtenerError(new ModeloError(ex));
                 return null;
             }
         }
@@ -54,8 +56,9 @@ namespace BlobFunctions.Core.Servicio
                 }
                 return ((MemoryStream)mem).ToArray();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ErrorHelper.ObtenerError(new ModeloError(ex));
                 return null;
             }
         }
