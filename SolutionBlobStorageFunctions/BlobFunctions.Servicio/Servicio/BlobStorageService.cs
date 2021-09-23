@@ -1,13 +1,10 @@
-﻿using BlobFunctions.Core.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlobFunctions.Servicio.Servicio
+﻿namespace BlobFunctions.Servicio.Servicio
 {
-    public class BlobStorageService
+    using BlobFunctions.Core.Interface;
+    using BlobFunctions.Servicio.Interface;
+    using System.Threading.Tasks;
+
+    public class BlobStorageService : IBlobStorageService
     {
         public IHelperBlobStorage HelperBlobStorage;
         public BlobStorageService(IHelperBlobStorage HelperBlobStorage) 

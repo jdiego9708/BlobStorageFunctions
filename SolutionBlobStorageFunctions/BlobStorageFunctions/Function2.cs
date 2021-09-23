@@ -24,8 +24,8 @@ namespace BlobStorageFunctions
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
                 InfoArchivo infoArchivo = JsonConvert.DeserializeObject<InfoArchivo>(requestBody);
 
-
-
+                ProcesarFuncion procesarFuncion = new();
+                procesarFuncion.Procesar(infoArchivo);
 
                 HttpResponseData response = req.CreateResponse(HttpStatusCode.OK);
                 response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
